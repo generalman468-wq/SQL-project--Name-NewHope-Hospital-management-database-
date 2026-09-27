@@ -1,0 +1,101 @@
+
+Project Objectives
+You are tasked with designing and implementing a PostgreSQL database for NewHope, a company that requires a computerized Hospital Management System. Your solution must include proper schema design, table relationships, constraints, security policies, and reporting functionalities
+The entities for the NewHope hospital database management system are:
+DoctorDetails
+PatientDetails
+WardDetails
+MedicalHistory
+Payments
+The attributes of the entities listed above are:
+DoctorDetails: DoctorID, FirstName, LastName, Address, Phone_Num, Emp1oyment_Type, Ward_ID, Specialization
+PatientDetails: PatientID, FirstName, LastName, Address, Age, Height, Weight, B1ood_Grp, Admit_Date, Discharge_Date, Treatment_Type, DoctorID, Ward_ID, Phone Num
+WardDetails: WardID, WardName, Tota1_Beds, Ward_Charge, Avai1_Beds
+MedicalHistory: RecordID, PatientID, DoctorID, Disease, OriginalWard, DischargeWard
+Payments: PaymentID, PatientID, PaymentDate, PaymentMethod, CC_Num, CardHoldersName, Check_Num, AdvancePayment, FinalPayment, PaymentStatus
+To create the software system for NewHope Hospital, RedSky System needs to perform the following tasks:
+Create a database called NewHope.
+Create the table designs as per the relationship diagram, ensuring minimum disk space utilization.
+Perform validations on the tables as per the following guidelines:
+Table: Patients.PatientDetails
+PatientID should be auto generated.
+FirstName, LastName, Address, and Phone should not be left blank.
+Age, Height, and Weight cannot be less than 0.
+B1ood_Grp should have any of the following values: A, B, AB, or O.
+Admit_Date and Discharge_Date cannot be less than the current date.
+DoctorID is a foreign key from the DoctorDetails table.
+Ward_ID is a foreign key from the WardDetails table
+
+Phone_Num should be in the following format:
+‘[0-9][0-9]-[0-9] [0-9][0-9]-[0-9][0-9][0-9][0-9]-[0-9][0-9] [0-9]-[0-9] [0-9]
+[0-9]’
+Example: 11-111-1111-111-111
+
+Table: HumanResources.DoctorDetails
+DoctorID should be auto generated.
+FirstName, LastName, Address, and Phone_Num should not be left blank.
+Emp1oyment_Type of each doctor should have one of the following values: Resident or Visiting.
+Ward_ID is a foreign key from the WardDetails table.
+Phone_Num should be in the following format:
+‘[0-9][0-9]-[0-9] [0-9][0-9]-[0-9][0-9][0-9][0-9]-[0-9][0-9] [0-9]-[0-9] [0-9]
+[0-9]’
+Example: 11-111-1111-111-111
+
+
+Table: Facilities.WardDetails
+WardID should be auto generated.
+WardName should have any of the following values: OPD, ICU, CCU,Sp1_Ward, Genera1_Ward, or Emergency.
+Table: Patients.MedicalHistory
+RecordID should be auto generated.
+PatientID is a foreign key from the PatientsDetails table.
+DoctorID is a foreign key from the DoctorDetails table.
+Disease cannot be left blank.
+OriginalWard is a foreign key from the WardDetails table.
+DischargeWard is a foreign key from the WardDetails table.
+
+Table: Management.Payments
+PaymentID must be auto generated.
+PatientID is a foreign key from the PatientDetails table.
+PaymentDate cannot be less than the current date.
+PaymentMethod should have any of the following values: Cash, Check, or Credit C
+CC_Num and CC_Name will record the credit card number and card holder's name, respectively. These details should be entered if the payment is made by using a credit card. If a credit card is not used to make the payment, these fields should be left blank.
+Check_Num will record the check number and should be entered if the payment is made through check. If a check is not used to make the payment, this field should be left blank.
+AdvancePayment should store the initial payment received on behalf of the patient, at the time of his or her admission to the hospital.
+FinalPayment should store the final amount chargeable from the patient and is calculated at the time of discharge of the patient.
+The FinalPayment amount must be calculated by using the following formula:
+FinalPayment — Total Bill — AdvancePayment.
+The total bill will be calculated at the time of discharge by adding the ward charges for the number of days the patient was admitted to the ward, the doctor's fee, and other charges as applicable.
+PaymentStatus can have either ‘Paid’ or ‘Pending’. Its value depends on whether the patient has made the initial payment or not.
+Create appropriate relationships between the tables.
+In a text file, store the details of all the doctors who have managed a particular ward in the current month. Make use of the required tools to perform the data transfer.
+Store the payment details for each month in a text file. Make use of the required tools to perform the data transfer.
+Create appropriate indexes to speed up the execution of the following tasks:
+Extracting the patient details admitted or discharged on a particular date
+Extracting the patient details for each patient whose initial payment is pending
+Displaying the number of beds available in each ward along with the doctors assigned to each ward.
+ 
+
+
+Security & Data Protection
+User Access Control
+Create logins for:
+Musa (Database Administrator)
+Ruth (Read-only access)
+Aisha (Read-only access)
+
+Store crucial data in encrypted format.
+Submission Guidelines
+Submit a Word document containing:
+All SQL statements with explanations.
+Screenshots of executed queries (if applicable).
+Justifications for design decisions.
+Deadline: [Two weeks after published]
+Format: PDF or Word (.docx)
+Prepare a PowerPoint for Presentations
+
+Evaluation Criteria
+✔ Correct SQL syntax & constraints
+✔ Proper relationship design
+✔ Security implementation
+✔ Performance optimization
+✔ Clarity & justification of decisions
